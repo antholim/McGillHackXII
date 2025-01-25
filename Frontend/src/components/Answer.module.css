@@ -1,8 +1,32 @@
+.textAreaContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Ensure proper positioning */
+    width: 100%; /* Full width of the container */
+    padding: 0; /* Remove any default padding */
+    gap: 1rem; /* Add space between the button and textarea */
+}
+
+.focusButton {
+    all: unset; /* Remove default styling */
+    cursor: pointer;
+    font-size: 0.8rem;
+    text-align: center;
+    width: min-content; /* Button adapts to content width */
+    margin-right: 1rem; /* Add spacing from the edge of the container */
+}
+
+.focusButton:hover {
+    color: #333;
+}
+
 .textArea {
     width: 100%;
-    height: 100%;
+    height: 100px; /* Set a fixed height for better UI */
     outline: none;
     resize: none;
     border: none;
     padding: 2rem 5rem;
+    flex-grow: 1; /* Allow the textarea to fill available space */
 }

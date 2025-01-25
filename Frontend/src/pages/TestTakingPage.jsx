@@ -1,5 +1,6 @@
 import styles from "./TestTakingPage.module.css"
 import Answer from "../components/Answer.jsx";
+import Question from "../components/Question.jsx";
 
 export default function testTakingPage() {
 
@@ -9,6 +10,7 @@ export default function testTakingPage() {
             <div className={styles.leftContainer}>
 
                 <div className={styles.questionContainer}>
+                    <Question/>
 
                 </div>
                 <div className={styles.answerContainer}>
