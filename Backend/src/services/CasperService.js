@@ -11,6 +11,12 @@ export default class CasperService {
         this.API_KEY = process.env.OPEN_AI_KEY;
 
     }    
+    getScoreNumber(inputString) {
+        // Use a regular expression to find the number after "Score:"
+        const match = inputString.match(/Score:\s*(\d+)/);
+        // If a match is found, return the number as an integer, otherwise return null
+        return match ? parseInt(match[1], 10) : null;
+    }
     async sendUserInput(userInput) {
         try {
             const response = await axios.post(
@@ -21,7 +27,7 @@ export default class CasperService {
                         { role: "system", content: promptCorrector },
                         { role: "user", content: userInput }
                     ],
-                    max_tokens: 100
+                    max_tokens: 500
                 },
                 {
                     headers: {
@@ -30,7 +36,14 @@ export default class CasperService {
                     }
                 }
             );
-            return response.data.choices[0].message.content;
+            console.log({
+                casper_response: response.data.choices[0].message.content,
+                score : this.getScoreNumber(response.data.choices[0].message.content)
+            })
+            return {
+                casper_response: response.data.choices[0].message.content,
+                score : this.getScoreNumber(response.data.choices[0].message.content)
+            };
     
         } catch (error) {
             console.error("Error fetching data from OpenAI:", error.response?.data || error.message);
