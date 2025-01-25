@@ -1,5 +1,6 @@
 import Home from './pages/Home.jsx';
 import { createBrowserRouter, RouterProvider} from 'react-router-dom';
+import { CssBaseline } from '@mui/material';
 import AccountDashboard from "./pages/AccountDashboard.jsx";
 import TestTakingPage from './pages/TestTakingPage.jsx'
 
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
 export default function App() {
     return (
         <>
+            <CssBaseline />
             <RouterProvider router={router}></RouterProvider>
         </>
     );
