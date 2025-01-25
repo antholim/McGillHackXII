@@ -1,1 +1,3 @@
-import UserService from "./services/UserService";
+import CasperService from "./services/CasperService.js";
+
+export const casperService = new CasperService();
