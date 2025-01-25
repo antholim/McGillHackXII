@@ -1,8 +1,14 @@
-import express from 'express';
-import UserController from '../controllers/userController';
+import express from "express";
+import verifyToken from "./middleware/verifyToken.js";
 const router = express.Router();
 
-router.post('/register', UserController.registerController())
-router.post('/login', UserController.loginController())
+router.get("/profile", verifyToken, async (req, res) => {
+  try {
+    const user = await findOrCreateUser(req.user);
+    res.status(200).json({ message: "User authenticated", user });
+  } catch (err) {
+    res.status(500).send("Error handling user");
+  }
+});
 
 export default router;
