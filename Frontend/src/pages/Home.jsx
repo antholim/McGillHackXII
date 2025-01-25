@@ -5,7 +5,10 @@ export default function Home() {
     return (
         <>
             <Header/>
-            Hello world
+
+            <div className="App">
+
+            </div>
         </>
     )
 }
