@@ -61,6 +61,8 @@
     margin-top: 2rem;
     align-self: flex-start;
     transition: all 0.3s ease;
+    font-family: 'Courier New', Courier, monospace;
+
 }
 
 .submitButton:hover {
@@ -175,6 +177,8 @@
     font-weight: bold;
     margin-top: 1rem;
     transition: all 0.3s ease;
+    font-family: 'Courier New', Courier, monospace;
+
 }
 
 .nextQuestionButton:hover {
