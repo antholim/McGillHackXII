@@ -52,9 +52,10 @@ const CountdownTimer = () => {
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      fontFamily: "Arial, sans-serif",
       fontSize: "2rem",
       padding: "1rem",
+      fontFamily: "Courier New, Courier, monospace",
+
     }}>
       <div>Time Left: {formatTime(timeLeft)}</div>
       <div style={{ marginTop: "20px" }}>
