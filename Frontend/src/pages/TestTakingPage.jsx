@@ -26,6 +26,8 @@ function TestTakingPageContent() {
     const [timerStarted, setTimerStarted] = useState(false); // To detect when the timer starts
     const [wordCount, setWordCount] = useState(0); // Track total word count
     const [elapsedTime, setElapsedTime] = useState(0); // Track time since timer started
+    const [idx, setIdx] = useState(0);
+
 
     // Function to count words
     const countWords = (text) => {
@@ -94,16 +96,20 @@ function TestTakingPageContent() {
         <div className={styles.mainContainer}>
             <div className={styles.leftContainer}>
                 <div className={styles.questionContainer}>
-                    
+                    <div>{dataAnswers[idx].scenario}</div>
                 </div>
+                <button onClick={() => setIdx((prevIdx) => (prevIdx + 1) % dataAnswers.length)}>Next Question : {idx}</button>
                 <CountdownTimer start={timerStarted} />
                 <div className={styles.wpmTracker}>
                     <p>Total Words: {wordCount}</p>
                     <p>Words Per Minute: {wordsPerMinute}</p>
                 </div>
                 <div className={styles.answerContainer}>
+                    {dataAnswers[idx].question1}
                     <Answer userInput={userInput1} handleInputChange={handleInputChange1} />
+                    {dataAnswers[idx].question2}
                     <Answer userInput={userInput2} handleInputChange={handleInputChange2} />
+                    {dataAnswers[idx].question3}
                     <Answer userInput={userInput3} handleInputChange={handleInputChange3} />
                 </div>
                 <button className={styles.submitButton} onClick={fetchGPTResponse} disabled={loading}>
