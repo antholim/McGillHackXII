@@ -1,51 +1,58 @@
 import { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import styles from "./Register.module.css";
 
-function Register() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState();
-  const navigate = useNavigate();
+export default function Register() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
-  async function handleSubmit(e) {
-    try {
-    //   e.preventDefault();
-    console.log("Registering");
-      const result = await axios.post("http://localhost:3000/register", {
-        email,
-        password,
-      });
+    const handleRegister = () => {
+        if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return;
+        }
+        console.log("Name:", name);
+        console.log("Email:", email);
+        console.log("Password:", password);
+    };
 
-      console.log(email, password);
-      console.log("EMAIL")
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-      setError(error?.response?.data);
-    }
-  }
-
-  return (
-    <div>
-      <h2>Sign up</h2>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit" onClick={handleSubmit}>
-        Sign up
-      </button>
-    </div>
-  );
+    return (
+        <div className={styles.container}>
+            <div className={styles.formContainer}>
+                <h2 className={styles.title}>Register</h2>
+                <input
+                    type="text"
+                    placeholder="Full Name"
+                    className={styles.input}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                />
+                <input
+                    type="email"
+                    placeholder="Email"
+                    className={styles.input}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    className={styles.input}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    className={styles.input}
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <button className={styles.registerButton} onClick={handleRegister}>
+                    Register
+                </button>
+            </div>
+        </div>
+    );
 }
-
-export default Register;
