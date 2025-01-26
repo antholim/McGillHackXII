@@ -1,11 +1,15 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const LogoutButton = () => {
-  const { logout } = useAuth0();
 
+const LogoutButton = ({setIsAuthenticated}) => {
+  const navigate = useNavigate();
   return (
-    <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+    <button onClick={() => {
+      localStorage.setItem('token', "");
+      navigate("/");
+      setIsAuthenticated(false);
+    }}>
       Log Out
     </button>
   );

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect, useState } from 'react';
 import LoginButton from './LoginButton';
 import Logout from './Logout';
 import TopRightMenu from './TopRightMenu';
@@ -8,8 +8,13 @@ import LogoutButton from "./Logout";
 import axios from "axios"
 
 export default function Header() {
-    const { isAuthenticated } = useAuth0();
-
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+    useEffect(()=> {
+        const token = localStorage.getItem('token');
+        if (token) {
+            setIsAuthenticated(true);
+        }
+    }, [isAuthenticated])
     const fetchProfile = async () => {
         try {
             const response = await axios.get('http://localhost:3000/profile', {
@@ -28,7 +33,7 @@ export default function Header() {
                 <img src="/avgh5n121.webp" alt="Logo" className="logo" />
             </Link>
             <div className="auth-buttons">
-                {isAuthenticated ? <Logout /> : <LoginButton />}
+                {isAuthenticated ? <Logout setIsAuthenticated={setIsAuthenticated}/> : <LoginButton/>}
             </div>
             <TopRightMenu />
         </div>

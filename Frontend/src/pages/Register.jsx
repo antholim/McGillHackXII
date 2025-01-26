@@ -26,6 +26,9 @@ function Register() {
       console.log(email, password);
       console.log("EMAIL");
       console.log(result);
+      if (result?.status === 200) {
+        navigate("/login");
+      }
     } catch (error) {
       console.log(error);
       setError(error?.response?.data);

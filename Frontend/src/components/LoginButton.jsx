@@ -1,15 +1,16 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import authConfig from "./../auth_config.json";
+import { useNavigate } from "react-router-dom";
 
-const LoginButton = () => {
-  const { loginWithRedirect } = useAuth0();
 
+const LoginButton = ({setIsAuthenticated}) => {
+  const navigate = useNavigate();
   return (
       <button
           onClick={() => {
-            loginWithRedirect();
+            navigate("/login");
             console.log(authConfig.clientId);
+            setIsAuthenticated(true);
           }}
       >
         Log In
