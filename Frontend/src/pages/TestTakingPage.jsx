@@ -2,6 +2,9 @@ import styles from "./TestTakingPage.module.css";
 import Answer from "../components/Answer.jsx";
 import Question from "../components/Question.jsx";
 import LLMResponse from "../components/LLMResponse.jsx";
+import Header from "../components/Header.jsx";
+import TopRightMenu from "../components/TopRightMenu.jsx";
+import Footer from "../components/Footer.jsx"; // Import the Footer component
 import axios from "axios";
 import { useContext, useState, useEffect } from "react";
 import { TestTakingContext, TestTakingProvider } from "../Context/TestTakingContext.jsx";
@@ -27,7 +30,6 @@ function TestTakingPageContent() {
     const [wordCount, setWordCount] = useState(0); // Track total word count
     const [elapsedTime, setElapsedTime] = useState(0); // Track time since timer started
     const [idx, setIdx] = useState(0);
-
 
     // Function to count words
     const countWords = (text) => {
@@ -93,33 +95,40 @@ function TestTakingPageContent() {
     };
 
     return (
-        <div className={styles.mainContainer}>
-            <div className={styles.leftContainer}>
-                <div className={styles.questionContainer}>
-                    <div>{dataAnswers[idx].scenario}</div>
+        <div>
+            <Header />
+            <TopRightMenu />
+            <div className={styles.mainContainer}>
+                <div className={styles.leftContainer}>
+                    <div className={styles.questionContainer}>
+                        <div>{dataAnswers[idx].scenario}</div>
+                    </div>
+                    <button className={styles.nextQuestionButton} onClick={() => setIdx((prevIdx) => (prevIdx + 1) % dataAnswers.length)}>
+                        Next Question : {idx}
+                    </button>
+                    <CountdownTimer start={timerStarted} />
+                    <div className={styles.wpmTracker}>
+                        <p>Total Words: {wordCount}</p>
+                        <p>Words Per Minute: {wordsPerMinute}</p>
+                    </div>
+                    <div className={styles.answerContainer}>
+                        {dataAnswers[idx].question1}
+                        <Answer userInput={userInput1} handleInputChange={handleInputChange1} />
+                        {dataAnswers[idx].question2}
+                        <Answer userInput={userInput2} handleInputChange={handleInputChange2} />
+                        {dataAnswers[idx].question3}
+                        <Answer userInput={userInput3} handleInputChange={handleInputChange3} />
+                    </div>
+                    <button className={styles.submitButton} onClick={fetchGPTResponse} disabled={loading}>
+                        {loading ? "Processing..." : "Submit Answer"}
+                    </button>
                 </div>
-                <button onClick={() => setIdx((prevIdx) => (prevIdx + 1) % dataAnswers.length)}>Next Question : {idx}</button>
-                <CountdownTimer start={timerStarted} />
-                <div className={styles.wpmTracker}>
-                    <p>Total Words: {wordCount}</p>
-                    <p>Words Per Minute: {wordsPerMinute}</p>
-                </div>
-                <div className={styles.answerContainer}>
-                    {dataAnswers[idx].question1}
-                    <Answer userInput={userInput1} handleInputChange={handleInputChange1} />
-                    {dataAnswers[idx].question2}
-                    <Answer userInput={userInput2} handleInputChange={handleInputChange2} />
-                    {dataAnswers[idx].question3}
-                    <Answer userInput={userInput3} handleInputChange={handleInputChange3} />
-                </div>
-                <button className={styles.submitButton} onClick={fetchGPTResponse} disabled={loading}>
-                    {loading ? "Processing..." : "Submit Answer"}
-                </button>
-            </div>
 
-            <div className={styles.rightContainer}>
-                <LLMResponse response={response} score={score} loading={loading} />
+                <div className={styles.rightContainer}>
+                    <LLMResponse response={response} score={score} loading={loading} />
+                </div>
             </div>
+            <Footer /> {/* Add the Footer component */}
         </div>
     );
 }

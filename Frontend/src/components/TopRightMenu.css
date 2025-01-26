@@ -23,8 +23,8 @@
 }
 
 .top-right-menu-container.open .hamburger-menu {
-    width: 500px; /* Extend the width when menu is open */
-    background-color: #eef6ff; /* Subtle color change when open */
+    width: 300px; /* Extend the width when menu is open */
+     /* Subtle color change when open */
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25); /* Elevated shadow when open */
 }
 
@@ -50,7 +50,7 @@
 }
 
 .menu-content button:hover {
-    color: #3b82f6; /* Add a blue hover color */
+    /* Add a blue hover color */
     transform: scale(1.1); /* Smooth scaling effect */
 }
 
@@ -71,4 +71,34 @@
 
 .menu-content button:hover::after {
     width: 100%; /* Animate underline on hover */
+}
+
+.startButton, .stopButton {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background-color: #1e3c72;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 2rem;
+    align-self: flex-start;
+    transition: all 0.3s ease;
+}
+
+.startButton:hover, .stopButton:hover {
+    background-color: #2a5298;
+}
+
+.startButton:disabled, .stopButton:disabled {
+    background-color: #b0c4de;
+    cursor: not-allowed;
+}
+
+.timeLeft {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1e3c72;
+    margin-top: 1rem;
 }

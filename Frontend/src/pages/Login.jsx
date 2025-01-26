@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from "./Login.module.css";
 import axios from 'axios';
 import Header from '../components/Header'; // Import Header component
+import Footer from '../components/Footer'; // Import Footer component
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -102,6 +103,7 @@ function Login() {
                     </button>
                 </div>
             </div>
+            <Footer /> {/* Add Footer component */}
         </div>
     );
 }

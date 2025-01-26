@@ -31,37 +31,3 @@
     position: absolute;
     left: 10px;
 }
-
-.auth-buttons {
-    align-items: center;
-    position: absolute;
-    top: 50%; /* Center vertically */
-    right: 25px; /* Align to the right with some padding */
-    transform: translateY(-50%); /* Adjust for vertical centering */
-    opacity: 1; /* Always visible */
-    visibility: visible; /* Always visible */
-    pointer-events: auto; /* Enable interaction */
-}
-
-.auth-buttons button {
-    margin-left: 10px;
-    color: rgb(87, 83, 73); /* Set the text color to white */
-    background-color: transparent; /* Set a modern blue background color */
-    border: none; /* Remove the border */
-    border-radius: 5px; /* Add rounded corners */
-    padding: 10px 20px; /* Add padding */
-    transition: color 0.3s ease, transform 0.3s ease;
-    font-size: 16px; /* Increase the font size */
-    cursor: pointer; /* Change the cursor to pointer */
-    font-family: 'Courier New', sans-serif;
-}
-
-.auth-buttons button:hover {
-    color: rgb(87, 83, 73);
-    transform: scale(1.05);
-}
-
-.auth-buttons button:active {
-    color: rgb(87, 83, 73);
-    transform: scale(1);
-}

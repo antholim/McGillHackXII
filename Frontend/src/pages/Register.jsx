@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from "./Register.module.css";
 import axios from 'axios';
 import Header from '../components/Header'; // Import Header component
+import Footer from '../components/Footer'; // Import Footer component
 
 function Register() {
     const [email, setEmail] = useState("");
@@ -13,7 +14,7 @@ function Register() {
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
-            navigate("/tesqtTaking");
+            navigate("/testTaking");
         }
     }, [navigate]);
 
@@ -62,6 +63,7 @@ function Register() {
                     {error && <p className={styles.error}>{error}</p>}
                 </div>
             </div>
+            <Footer /> {/* Add Footer component */}
         </div>
     );
 }

@@ -30,8 +30,6 @@ export default function TopRightMenu() {
         {menuOpen && (
           <div className="menu-content">
             <button onClick={() => handleNavigation('/testTaking')}>TRY ME</button>
-            <button>FEATURE(S)</button>
-            <button onClick={() => handleNavigation('/account')}>ACCOUNT</button>
             {isAuthenticated ? <LogoutButton setIsAuthenticated={setIsAuthenticated}/> : <LoginButton setIsAuthenticated={setIsAuthenticated}/>} {/* Add login/logout button */}
           </div>
         )}
