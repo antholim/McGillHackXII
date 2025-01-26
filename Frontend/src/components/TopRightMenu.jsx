@@ -22,9 +22,9 @@ export default function TopRightMenu() {
         &#9776;
         {menuOpen && (
           <div className="menu-content">
-            <button onClick={() => handleNavigation('/account')}>Account</button>
-            <button onClick={() => handleNavigation('/testTaking')}>Try it out!</button>
-            <button>Feature to be seen</button>
+            <button onClick={() => handleNavigation('/account')}>ACCOUNT</button>
+            <button onClick={() => handleNavigation('/testTaking')}>TRY ME</button>
+            <button>FEATURE(S)</button>
           </div>
         )}
       </div>

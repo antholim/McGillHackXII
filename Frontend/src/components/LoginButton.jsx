@@ -12,7 +12,7 @@ const LoginButton = () => {
             console.log(authConfig.clientId);
           }}
       >
-        Log In
+        LOG IN
       </button>
   );
 };
