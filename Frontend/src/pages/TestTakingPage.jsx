@@ -3,25 +3,75 @@ import Answer from "../components/Answer.jsx";
 import Question from "../components/Question.jsx";
 import LLMResponse from "../components/LLMResponse.jsx";
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { TestTakingContext, TestTakingProvider } from "../Context/TestTakingContext.jsx";
 import CountdownTimer from "../components/CountdownTimer.jsx";
 
 function TestTakingPageContent() {
-    const { response, setResponse, score, setScore, userInput1, setUserInput1,userInput2, setUserInput2,userInput3, setUserInput3 } =
-        useContext(TestTakingContext);
+    const {
+        response,
+        setResponse,
+        score,
+        setScore,
+        userInput1,
+        setUserInput1,
+        userInput2,
+        setUserInput2,
+        userInput3,
+        setUserInput3,
+    } = useContext(TestTakingContext);
 
     const [loading, setLoading] = useState(false);
+    const [timerStarted, setTimerStarted] = useState(false); // To detect when the timer starts
+    const [wordCount, setWordCount] = useState(0); // Track total word count
+    const [elapsedTime, setElapsedTime] = useState(0); // Track time since timer started
 
+    // Function to count words
+    const countWords = (text) => {
+        return text.trim().split(/\s+/).filter(Boolean).length; // Split by spaces and filter empty strings
+    };
+
+    // Combined input change handlers
     const handleInputChange1 = (e) => {
         setUserInput1(e.target.value);
+        if (!timerStarted && e.target.value) {
+            setTimerStarted(true); // Start the timer when user begins typing
+        }
     };
+
     const handleInputChange2 = (e) => {
         setUserInput2(e.target.value);
+        if (!timerStarted && e.target.value) {
+            setTimerStarted(true);
+        }
     };
+
     const handleInputChange3 = (e) => {
         setUserInput3(e.target.value);
+        if (!timerStarted && e.target.value) {
+            setTimerStarted(true);
+        }
     };
+
+    // Effect to calculate total word count when user inputs change
+    useEffect(() => {
+        const totalWords =
+            countWords(userInput1) + countWords(userInput2) + countWords(userInput3);
+        setWordCount(totalWords);
+    }, [userInput1, userInput2, userInput3]);
+
+    // Effect to track elapsed time when the timer starts
+    useEffect(() => {
+        if (timerStarted) {
+            const interval = setInterval(() => {
+                setElapsedTime((prevTime) => prevTime + 1);
+            }, 1000);
+            return () => clearInterval(interval); // Clean up on component unmount
+        }
+    }, [timerStarted]);
+
+    // Calculate words per minute (WPM)
+    const wordsPerMinute = elapsedTime > 0 ? Math.round((wordCount / elapsedTime) * 60) : 0;
 
     const fetchGPTResponse = async () => {
         setLoading(true); // Start loading
@@ -45,7 +95,11 @@ function TestTakingPageContent() {
                 <div className={styles.questionContainer}>
                     <Question />
                 </div>
-                <CountdownTimer/>
+                <CountdownTimer start={timerStarted} />
+                <div className={styles.wpmTracker}>
+                    <p>Total Words: {wordCount}</p>
+                    <p>Words Per Minute: {wordsPerMinute}</p>
+                </div>
                 <div className={styles.answerContainer}>
                     <Answer userInput={userInput1} handleInputChange={handleInputChange1} />
                     <Answer userInput={userInput2} handleInputChange={handleInputChange2} />
