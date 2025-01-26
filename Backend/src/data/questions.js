@@ -71,6 +71,4 @@ const data = [
          question3: "", 
          answer3: "", 
          quartile: ""},
-    
-
 ];

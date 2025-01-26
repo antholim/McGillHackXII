@@ -5,22 +5,29 @@ import LLMResponse from "../components/LLMResponse.jsx";
 import axios from "axios";
 import { useContext, useState } from "react";
 import { TestTakingContext, TestTakingProvider } from "../Context/TestTakingContext.jsx";
+import CountdownTimer from "../components/CountdownTimer.jsx";
 
 function TestTakingPageContent() {
-    const { response, setResponse, score, setScore, userInput, setUserInput } =
+    const { response, setResponse, score, setScore, userInput1, setUserInput1,userInput2, setUserInput2,userInput3, setUserInput3 } =
         useContext(TestTakingContext);
 
     const [loading, setLoading] = useState(false);
 
-    const handleInputChange = (e) => {
-        setUserInput(e.target.value);
+    const handleInputChange1 = (e) => {
+        setUserInput1(e.target.value);
+    };
+    const handleInputChange2 = (e) => {
+        setUserInput2(e.target.value);
+    };
+    const handleInputChange3 = (e) => {
+        setUserInput3(e.target.value);
     };
 
     const fetchGPTResponse = async () => {
         setLoading(true); // Start loading
         try {
             const res = await axios.post("http://localhost:3000/user-input", {
-                userInput: userInput,
+                userInput: userInput1 + " " + userInput2 + " " + userInput3,
             });
             console.log(res.data);
             setResponse(res.data.casper_response);
@@ -38,8 +45,11 @@ function TestTakingPageContent() {
                 <div className={styles.questionContainer}>
                     <Question />
                 </div>
+                <CountdownTimer/>
                 <div className={styles.answerContainer}>
-                    <Answer userInput={userInput} handleInputChange={handleInputChange} />
+                    <Answer userInput={userInput1} handleInputChange={handleInputChange1} />
+                    <Answer userInput={userInput2} handleInputChange={handleInputChange2} />
+                    <Answer userInput={userInput3} handleInputChange={handleInputChange3} />
                 </div>
                 <button className={styles.submitButton} onClick={fetchGPTResponse} disabled={loading}>
                     {loading ? "Processing..." : "Submit Answer"}
