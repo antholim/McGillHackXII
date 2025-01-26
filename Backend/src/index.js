@@ -41,19 +41,38 @@ app.post('/verifyToken', (req, res) => {
 });
 app.post('/user-input', async (req, res) => {
     const token = req.headers['authorization']?.split(' ')[1];
-    //Authenticate the token
-    jwt.verify(token, process.env.JWT_ACCESS_SECRET, async (err, decoded) => {
-        if (err) {
-            return res.status(403).json({ message: 'Failed to authenticate token' });
-        }
+    
+    if (!token) {
+        return res.status(401).json({ message: 'No token provided' }); // Ensure the response is returned
+    }
+
+    try {
+        // Verify the token
+        const decoded = jwt.verify(token, process.env.JWT_ACCESS_SECRET);
+
+        console.log(decoded);
+
         const user = await User.findOne({ email: decoded.email });
-        if (user) {
-            const response = await casperService.sendUserInput(req.body.userInput);
-            res.send(JSON.stringify(response));
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' }); // Return the response
         }
-    });
-    res.send("User not found");
+
+        // Handle user input and send response
+        const response = await casperService.sendUserInput(req.body.userInput);
+
+        return res.status(200).json({ message: 'Success', casper_response: response }); // Return the response
+    } catch (err) {
+        console.error(err);
+        
+        if (err.name === 'JsonWebTokenError' || err.name === 'TokenExpiredError') {
+            return res.status(403).json({ message: 'Failed to authenticate token' }); // Return the response
+        }
+
+        return res.status(500).json({ message: 'Internal server error' }); // Catch-all for other errors
+    }
 });
+
 app.post('/register', async (req, res) => {
     console.log("register 123")
     const hashedPassword = await bcrypt.hash(req.body.password, 10);

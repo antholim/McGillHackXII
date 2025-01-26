@@ -24,7 +24,7 @@
     background-color: #ffffff;
     border-left: 2px solid #e0e0e0;
     padding: 2rem;
-    box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.05);
 }
 
 .questionContainer {
@@ -161,4 +161,3 @@
     font-size: 0.7rem;
     color: #333;
 }
-
