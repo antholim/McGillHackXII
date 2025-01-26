@@ -7,7 +7,9 @@ export const TestTakingContext = createContext();
 export const TestTakingProvider = ({ children }) => {
     const [response, setResponse] = useState("");
     const [score, setScore] = useState("");
-    const [userInput, setUserInput] = useState("");
+    const [userInput1, setUserInput1] = useState("");
+    const [userInput2, setUserInput2] = useState("");
+    const [userInput3, setUserInput3] = useState("");
 
     return (
         <TestTakingContext.Provider
@@ -16,8 +18,12 @@ export const TestTakingProvider = ({ children }) => {
                 setResponse,
                 score,
                 setScore,
-                userInput,
-                setUserInput,
+                userInput1,
+                setUserInput1,
+                userInput2,
+                setUserInput2,
+                userInput3,
+                setUserInput3,
             }}
         >
             {children}
