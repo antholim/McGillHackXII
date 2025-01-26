@@ -1,9 +1,7 @@
 import React, { createContext, useState } from "react";
 
-// Create Context
 export const TestTakingContext = createContext();
 
-// Context Provider Component
 export const TestTakingProvider = ({ children }) => {
     const [response, setResponse] = useState("");
     const [score, setScore] = useState("");

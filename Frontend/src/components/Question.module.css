@@ -26,13 +26,13 @@
     cursor: pointer;
     color: #333;
     background-color: transparent;
-    border-right: 2px solid transparent; /* Default transparent border */
-    transition: all 0.3s ease; /* Smooth transition for hover and active states */
+    border-right: 2px solid transparent;
+    transition: all 0.3s ease;
 }
 
 .navButton:hover {
-    background-color: #f0f0f0; /* Optional subtle hover effect */
-    border-right: 2px solid #cccccc; /* Add a visible border on hover */
+    background-color: #f0f0f0;
+    border-right: 2px solid #cccccc;
 }
 
 .activeButton {
@@ -42,4 +42,4 @@
     color: #333;
     background-color: transparent;
     border-right: 2px solid #cccccc;
-} /* Active state border */
+}

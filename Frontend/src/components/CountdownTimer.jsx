@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 const CountdownTimer = () => {
-  const [timeLeft, setTimeLeft] = useState(5 * 60); // 5 minutes in seconds
-  const [isRunning, setIsRunning] = useState(false); // To track whether the timer is running
+  const [timeLeft, setTimeLeft] = useState(5 * 60);
+  const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
     let timerId;
@@ -12,11 +12,9 @@ const CountdownTimer = () => {
       }, 1000);
     }
 
-    // Cleanup the interval on component unmount or when the timer stops
     return () => clearInterval(timerId);
   }, [isRunning, timeLeft]);
 
-  // Helper function to format time as MM:SS
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;

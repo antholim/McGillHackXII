@@ -1,4 +1,3 @@
-/* Top-right menu container */
 .top-right-menu-container {
     position: fixed;
     top: 20px;
@@ -6,16 +5,15 @@
     z-index: 10;
 }
 
-/* Hamburger menu button */
 .hamburger-menu {
     width: 70px;
     height: 70px;
-    background-color: #f8ecec; /* Subtle light color */
+    background-color: #f8ecec;
     border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Softer shadow */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     border: 2px solid rgba(59, 130, 246, 0.5);
     cursor: pointer;
     font-size: 30px;
@@ -23,54 +21,49 @@
 }
 
 .top-right-menu-container.open .hamburger-menu {
-    width: 300px; /* Extend the width when menu is open */
-     /* Subtle color change when open */
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25); /* Elevated shadow when open */
+    width: 300px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25); 
 }
 
-/* Menu content styling */
 .menu-content {
     margin-top: 10px;
     display: flex;
     margin-left: 20px;
     align-items: center;
-    gap: 20px; /* Consistent spacing between buttons */
+    gap: 20px;
 }
 
-/* Menu buttons */
 .menu-content button {
-    color: #575349; /* Neutral and elegant color */
+    color: #575349;
     background: none;
     border: none;
     font-size: 16px;
     cursor: pointer;
     transition: color 0.3s ease, transform 0.3s ease;
-    font-family: 'Courier New', Courier, monospace; /* Classic, clean font */
-    white-space: nowrap; /* Prevent line breaks in button text */
+    font-family: 'Courier New', Courier, monospace;
+    white-space: nowrap;
 }
 
 .menu-content button:hover {
-    /* Add a blue hover color */
-    transform: scale(1.1); /* Smooth scaling effect */
+    transform: scale(1.1);
 }
 
 .menu-content button:active {
-    transform: scale(0.95); /* Pressed button effect */
+    transform: scale(0.95);
 }
 
-/* Add a soft border or underline effect when hovering */
 .menu-content button::after {
     content: "";
     display: block;
     width: 0%;
     height: 2px;
-    background: #3b82f6; /* Underline color */
+    background: #3b82f6;
     transition: width 0.3s ease;
     margin-top: 5px;
 }
 
 .menu-content button:hover::after {
-    width: 100%; /* Animate underline on hover */
+    width: 100%;
 }
 
 .startButton, .stopButton {

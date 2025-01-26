@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import LoginButton from './LoginButton'; // Import the LoginButton component
-import LogoutButton from './Logout'; // Import the LogoutButton component
-import "./TopRightMenu.css"; // Import the CSS file
+import LoginButton from './LoginButton';
+import LogoutButton from './Logout';
+import "./TopRightMenu.css";
 
 export default function TopRightMenu() {
   const navigate = useNavigate();
