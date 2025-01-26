@@ -1,0 +1,66 @@
+.header-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+}
+
+.logo-container {
+    background-color: rgb(248,236,236);
+    border-radius: 10px;
+    width: 200px; /* Set the width to always be extended */
+    height: 70px; /* Set the height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase the box shadow */
+    text-decoration: none;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    border: 2px solid rgba(59,130,246,0.5); /* Add a border */
+    transform: scale(1.1); /* Slightly enlarge the container */
+}
+
+
+.logo {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 10px;
+}
+
+.auth-buttons {
+    align-items: center;
+    position: absolute;
+    top: 50%; /* Center vertically */
+    right: 25px; /* Align to the right with some padding */
+    transform: translateY(-50%); /* Adjust for vertical centering */
+    opacity: 1; /* Always visible */
+    visibility: visible; /* Always visible */
+    pointer-events: auto; /* Enable interaction */
+}
+
+.auth-buttons button {
+    margin-left: 10px;
+    color: white; /* Set the text color to white */
+    background-color: #007BFF; /* Set a modern blue background color */
+    border: none; /* Remove the border */
+    border-radius: 5px; /* Add rounded corners */
+    padding: 10px 20px; /* Add padding */
+    font-size: 16px; /* Increase the font size */
+    cursor: pointer; /* Change the cursor to pointer */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition effects */
+}
+
+.auth-buttons button:hover {
+    background-color: #0056b3; /* Darken the background color on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.auth-buttons button:active {
+    background-color: #004085; /* Further darken the background color on active */
+    transform: scale(1); /* Reset the scale on active */
+}

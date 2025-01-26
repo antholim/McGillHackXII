@@ -1,0 +1,50 @@
+.top-right-menu-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+.hamburger-menu {
+    width: 70px;
+    height: 70px;
+    background-color: rgb(248, 236, 236);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(59, 130, 246, 0.5);
+    cursor: pointer;
+    font-size: 30px;
+    transition: width 0.3s ease;
+}
+
+.top-right-menu-container.open .hamburger-menu {
+    width: 300px; /* Extend the width when menu is open */
+}
+
+.menu-content {
+    display: flex;
+    margin-left: 20px; /* Add some space between the icon and buttons */
+}
+
+.menu-content button {
+    margin: 0 10px;
+    color: rgb(87, 83, 73);
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.menu-content button:hover {
+    color: rgb(87, 83, 73);
+    transform: scale(1.05);
+}
+
+.menu-content button:active {
+    color: rgb(87, 83, 73);
+    transform: scale(1);
+}
