@@ -117,6 +117,7 @@ function TestTakingPageContent() {
                     <div>{dataAnswers[idx].scenario}</div>
                 </div>
                 <button
+                    className={styles.nextQuestionButton}
                     onClick={() =>
                         setIdx((prevIdx) => (prevIdx + 1) % dataAnswers.length)
                     }

@@ -161,3 +161,28 @@
     font-size: 0.7rem;
     color: #333;
 }
+
+.nextQuestionButton {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background-color: #1e3c72;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.nextQuestionButton:hover {
+    background-color: #2a5298;
+}
+
+.nextQuestionButton:disabled {
+    background-color: #b0c4de;
+    cursor: not-allowed;
+}
+
+
+
