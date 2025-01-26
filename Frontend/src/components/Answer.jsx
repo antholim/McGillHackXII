@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./Answer.module.css";
 
-export default function Answer() {
+export default function Answer({ userInput, handleInputChange}) {
     const [text, setText] = useState("");
 
     return (
@@ -9,7 +9,8 @@ export default function Answer() {
             <button className={styles.focusButton}>Focus</button>
             <textarea
                 className={styles.textArea}
-                onChange={(e) => setText(e.target.value)}
+                value={userInput}
+                onChange={handleInputChange}
                 placeholder="Write your answer here"
             ></textarea>
         </div>
