@@ -40,7 +40,7 @@ export default function Home() {
                     <div className="founders-grid">
                         <div className="founder-card">
                             <h3>Anthony Lim</h3>
-                            <p>Fullstack web deb </p>
+                            <p>Fullstack web developer </p>
                             <a href="https://www.linkedin.com/in/antho-lim/" target="_blank" rel="noopener noreferrer">
                                 <FaLinkedin size={30} className="linkedin-icon" />
                             </a>
