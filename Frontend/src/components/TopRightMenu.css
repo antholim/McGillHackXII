@@ -17,16 +17,18 @@
     border: 2px solid rgba(59, 130, 246, 0.5);
     cursor: pointer;
     font-size: 30px;
-    transition: width 0.3s ease;
+    transition: width 0.5s ease;
 }
 
 .top-right-menu-container.open .hamburger-menu {
-    width: 300px; /* Extend the width when menu is open */
+    width: 450px; /* Extend the width when menu is open */
 }
 
 .menu-content {
+    margin-top: 8px;
     display: flex;
     margin-left: 20px; /* Add some space between the icon and buttons */
+
 }
 
 .menu-content button {
@@ -36,7 +38,9 @@
     border: none;
     font-size: 16px;
     cursor: pointer;
-    transition: color 0.3s ease, transform 0.3s ease;
+    transition: color 0.5s ease;
+    font-family: 'Courier New', sans-serif;
+    white-space: nowrap; /* Prevent line breaks within the button text */
 }
 
 .menu-content button:hover {

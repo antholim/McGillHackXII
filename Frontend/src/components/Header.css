@@ -45,22 +45,23 @@
 
 .auth-buttons button {
     margin-left: 10px;
-    color: white; /* Set the text color to white */
-    background-color: #007BFF; /* Set a modern blue background color */
+    color: rgb(87, 83, 73); /* Set the text color to white */
+    background-color: transparent; /* Set a modern blue background color */
     border: none; /* Remove the border */
     border-radius: 5px; /* Add rounded corners */
     padding: 10px 20px; /* Add padding */
+    transition: color 0.3s ease, transform 0.3s ease;
     font-size: 16px; /* Increase the font size */
     cursor: pointer; /* Change the cursor to pointer */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition effects */
+    font-family: 'Courier New', sans-serif;
 }
 
 .auth-buttons button:hover {
-    background-color: #0056b3; /* Darken the background color on hover */
-    transform: scale(1.05); /* Slightly enlarge the button on hover */
+    color: rgb(87, 83, 73);
+    transform: scale(1.05);
 }
 
 .auth-buttons button:active {
-    background-color: #004085; /* Further darken the background color on active */
-    transform: scale(1); /* Reset the scale on active */
+    color: rgb(87, 83, 73);
+    transform: scale(1);
 }

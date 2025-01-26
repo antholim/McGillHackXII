@@ -13,7 +13,7 @@ const LoginButton = ({setIsAuthenticated}) => {
             setIsAuthenticated(true);
           }}
       >
-        Log In
+        LOG IN
       </button>
   );
 };
