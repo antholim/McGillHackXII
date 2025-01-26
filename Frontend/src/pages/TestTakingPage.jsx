@@ -11,6 +11,7 @@ import {
 } from "../Context/TestTakingContext.jsx";
 import CountdownTimer from "../components/CountdownTimer.jsx";
 import { dataAnswers } from "../data/questions.js";
+import Footer from "../components/Footer.jsx";
 
 function TestTakingPageContent() {
     const {
@@ -167,6 +168,7 @@ export default function TestTakingPage() {
     return (
         <TestTakingProvider>
             <TestTakingPageContent />
+            <Footer/>
         </TestTakingProvider>
     );
 }

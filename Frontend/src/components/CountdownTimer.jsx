@@ -42,6 +42,7 @@ const CountdownTimer = () => {
     fontWeight: "bold",
     marginRight: "10px",
     transition: "all 0.3s ease",
+    fontFamily: "Courier New, Courier, monospace",
   };
 
   return (
@@ -52,7 +53,6 @@ const CountdownTimer = () => {
       alignItems: "center",
       fontSize: "2rem",
       padding: "1rem",
-      fontFamily: "Courier New, Courier, monospace",
 
     }}>
       <div>Time Left: {formatTime(timeLeft)}</div>
