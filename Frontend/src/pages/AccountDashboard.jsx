@@ -1,8 +1,10 @@
-export default function AccountDashboard() {
+import Header from "../components/Header.jsx";
 
-    return (
-        <>
-            Account
-        </>
-    )
+export default function AccountDashboard() {
+  return (
+    <>
+      <Header />
+      Account
+    </>
+  );
 }
