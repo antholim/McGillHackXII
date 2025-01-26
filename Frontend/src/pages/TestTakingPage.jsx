@@ -6,6 +6,7 @@ import axios from "axios";
 import { useContext, useState, useEffect } from "react";
 import { TestTakingContext, TestTakingProvider } from "../Context/TestTakingContext.jsx";
 import CountdownTimer from "../components/CountdownTimer.jsx";
+import { dataAnswers } from "../data/questions.js";
 
 function TestTakingPageContent() {
     const {
@@ -93,7 +94,7 @@ function TestTakingPageContent() {
         <div className={styles.mainContainer}>
             <div className={styles.leftContainer}>
                 <div className={styles.questionContainer}>
-                    <Question />
+                    
                 </div>
                 <CountdownTimer start={timerStarted} />
                 <div className={styles.wpmTracker}>
