@@ -23,7 +23,7 @@ function Login() {
             if (response?.status === 200) {
                 localStorage.setItem('token', response?.data?.accessToken); // Store token in local storage
                 console.log("Logged in successfully");
-                navigate('/trade'); 
+                navigate('/testtaking'); 
                 //Check if has 2FA
                 console.log(response)
             }

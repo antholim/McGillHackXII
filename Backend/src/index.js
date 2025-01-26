@@ -21,12 +21,38 @@ app.use(cors({
 
 app.use(express.json());
 
-(async ()=> {
-    await connectToMongoDB();
-})
+await connectToMongoDB();
+// (async ()=> {
+//     await connectToMongoDB();
+// })
+app.post('/verifyToken', (req, res) => {
+    const token = req.headers['authorization']?.split(' ')[1]; // Extract token from the "Authorization" header
+    if (!token) {
+        return res.status(401).json({ message: 'No token provided' });
+    }
+
+    jwt.verify(token, process.env.JWT_ACCESS_SECRET, (err, decoded) => {
+        if (err) {
+            return res.status(403).json({ message: 'Failed to authenticate token' });
+        }
+        // Token is valid
+        res.status(200).json({ message: 'Success' });
+    });
+});
 app.post('/user-input', async (req, res) => {
-    const response = await casperService.sendUserInput(req.body.userInput);
-    res.send(JSON.stringify(response));
+    const token = req.headers['authorization']?.split(' ')[1];
+    //Authenticate the token
+    jwt.verify(token, process.env.JWT_ACCESS_SECRET, async (err, decoded) => {
+        if (err) {
+            return res.status(403).json({ message: 'Failed to authenticate token' });
+        }
+        const user = await User.findOne({ email: decoded.email });
+        if (user) {
+            const response = await casperService.sendUserInput(req.body.userInput);
+            res.send(JSON.stringify(response));
+        }
+    });
+    res.send("User not found");
 });
 app.post('/register', async (req, res) => {
     console.log("register 123")
@@ -41,11 +67,12 @@ app.post('/register', async (req, res) => {
             email: req.body.email,
             password: hashedPassword,
         });
-        return res.status(200).json({ status: "Success" });
+        res.status(200).json({ status: "Success" });
     } catch (err) {
         if (err?.keyPattern?.email) {
-            return res.status(409).send("Email already exists");
+            res.status(409).send("Email already exists");
         }
+        res.status(502).send("Internal server error")
     }
 });
 app.post('/login', async (req, res) => {
