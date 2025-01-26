@@ -30,9 +30,6 @@ export default function Header() {
             <div className="auth-buttons">
                 {isAuthenticated ? <Logout /> : <LoginButton />}
             </div>
-            <button onClick={async ()=> {
-                await fetchProfile();
-            }}>Test</button>
             <TopRightMenu />
         </div>
     );
