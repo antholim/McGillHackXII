@@ -14,7 +14,7 @@
     height: 100%;
     background: linear-gradient(270deg, #1e3c72, #2a5298);
     background-size: 400% 400%;
-    animation: gradientAnimation 15s ease infinite;
+    animation: gradientAnimation 5s ease infinite;
     z-index: -1;
 }
 
