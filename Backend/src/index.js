@@ -59,9 +59,9 @@ app.post('/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     try {
         //If username exists
-        const existingUser = await User.findOne({ name: req.body.name });
+        const existingUser = await User.findOne({ name: req.body.email });
         if (existingUser) {
-            return res.status(409).send("Name already exists");
+            res.status(409).send("Email already exists");
         }
         const user = await User.create({
             email: req.body.email,
