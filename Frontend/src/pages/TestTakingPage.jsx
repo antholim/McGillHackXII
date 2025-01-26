@@ -25,6 +25,12 @@ function TestTakingPageContent() {
     const [timerStarted, setTimerStarted] = useState(false); // To detect when the timer starts
     const [wordCount, setWordCount] = useState(0); // Track total word count
     const [elapsedTime, setElapsedTime] = useState(0); // Track time since timer started
+    const [question, setQuestion] = useState(null);
+    const [idx, setIdx] = useState(0);
+
+    const getQuestion = () => {
+
+    }
 
     // Function to count words
     const countWords = (text) => {
@@ -89,12 +95,14 @@ function TestTakingPageContent() {
         }
     };
 
+
     return (
         <div className={styles.mainContainer}>
             <div className={styles.leftContainer}>
                 <div className={styles.questionContainer}>
-                    <Question />
+                    <div>{}</div>
                 </div>
+
                 <CountdownTimer start={timerStarted} />
                 <div className={styles.wpmTracker}>
                     <p>Total Words: {wordCount}</p>
