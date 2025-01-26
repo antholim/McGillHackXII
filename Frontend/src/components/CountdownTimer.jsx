@@ -33,20 +33,37 @@ const CountdownTimer = () => {
     setIsRunning(false);
   };
 
+  const buttonStyle = {
+    padding: "0.75rem 1.5rem",
+    border: "none",
+    cursor: "pointer",
+    color: "white",
+    backgroundColor: "#1e3c72",
+    borderRadius: "8px",
+    fontSize: "1rem",
+    fontWeight: "bold",
+    marginRight: "10px",
+    transition: "all 0.3s ease",
+  };
+
   return (
     <div style={{
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
-      height: "100vh",
       fontFamily: "Arial, sans-serif",
       fontSize: "2rem",
+      padding: "1rem",
     }}>
       <div>Time Left: {formatTime(timeLeft)}</div>
       <div style={{ marginTop: "20px" }}>
-        <button onClick={handleStart} style={{ marginRight: "10px", padding: "10px 20px", fontSize: "1rem" }}>Start</button>
-        <button onClick={handleStop} style={{ padding: "10px 20px", fontSize: "1rem" }}>Stop</button>
+        <button
+            style={buttonStyle}
+            onClick={handleStart} >Start</button>
+        <button
+              style={buttonStyle}
+              onClick={handleStop} >Stop</button>
       </div>
     </div>
   );
