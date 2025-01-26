@@ -1,3 +1,4 @@
+/* Top-right menu container */
 .top-right-menu-container {
     position: fixed;
     top: 20px;
@@ -5,50 +6,69 @@
     z-index: 10;
 }
 
+/* Hamburger menu button */
 .hamburger-menu {
     width: 70px;
     height: 70px;
-    background-color: rgb(248, 236, 236);
-    border-radius: 10px;
+    background-color: #f8ecec; /* Subtle light color */
+    border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Softer shadow */
     border: 2px solid rgba(59, 130, 246, 0.5);
     cursor: pointer;
     font-size: 30px;
-    transition: width 0.5s ease;
+    transition: width 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
 }
 
 .top-right-menu-container.open .hamburger-menu {
     width: 500px; /* Extend the width when menu is open */
+    background-color: #eef6ff; /* Subtle color change when open */
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25); /* Elevated shadow when open */
 }
 
+/* Menu content styling */
 .menu-content {
-    margin-top: 8px;
+    margin-top: 10px;
     display: flex;
-    margin-left: 20px; /* Add some space between the icon and buttons */
-
+    margin-left: 20px;
+    align-items: center;
+    gap: 20px; /* Consistent spacing between buttons */
 }
 
+/* Menu buttons */
 .menu-content button {
-    margin: 0 10px;
-    color: rgb(87, 83, 73);
+    color: #575349; /* Neutral and elegant color */
     background: none;
     border: none;
     font-size: 16px;
     cursor: pointer;
-    transition: color 0.5s ease;
-    font-family: 'Courier New', sans-serif;
-    white-space: nowrap; /* Prevent line breaks within the button text */
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-family: 'Courier New', Courier, monospace; /* Classic, clean font */
+    white-space: nowrap; /* Prevent line breaks in button text */
 }
 
 .menu-content button:hover {
-    color: rgb(87, 83, 73);
-    transform: scale(1.05);
+    color: #3b82f6; /* Add a blue hover color */
+    transform: scale(1.1); /* Smooth scaling effect */
 }
 
 .menu-content button:active {
-    color: rgb(87, 83, 73);
-    transform: scale(1);
+    transform: scale(0.95); /* Pressed button effect */
+}
+
+/* Add a soft border or underline effect when hovering */
+.menu-content button::after {
+    content: "";
+    display: block;
+    width: 0%;
+    height: 2px;
+    background: #3b82f6; /* Underline color */
+    transition: width 0.3s ease;
+    margin-top: 5px;
+}
+
+.menu-content button:hover::after {
+    width: 100%; /* Animate underline on hover */
 }
