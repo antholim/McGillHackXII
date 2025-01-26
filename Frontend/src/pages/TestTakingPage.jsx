@@ -168,7 +168,6 @@ export default function TestTakingPage() {
     return (
         <TestTakingProvider>
             <TestTakingPageContent />
-            <Footer/>
         </TestTakingProvider>
     );
 }
