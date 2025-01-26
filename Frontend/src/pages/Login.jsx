@@ -9,12 +9,48 @@ function Login() {
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
-    useEffect(()=> {
-        const token = localStorage.getItem('token');
-        if (token) {
-            navigate('/testTaking');
-        }
-    }, [])
+    useEffect(() => {
+        const verifyToken = async () => {
+            const token = localStorage.getItem('token'); // Retrieve token from localStorage
+
+            if (!token) {
+                console.log("No token found. Redirecting to login.");
+                navigate('/login');
+                return;
+            }
+
+            try {
+                const response = await axios.post(
+                    'http://localhost:3000/verifyToken', // Replace with your actual endpoint
+                    {}, // No body is required for this request
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
+                        },
+                    }
+                );
+
+                console.log(response);
+                if (response?.status === 200) {
+                    localStorage.setItem('token', response?.data?.accessToken); // Update the token in localStorage if provided
+                    console.log("Logged in successfully");
+                    navigate('/'); // Navigate to home page or intended route
+                }
+
+            } catch (err) {
+                if (err.response?.status === 404) {
+                    setError("Account doesn't exist");
+                } else if (err.response?.status === 401) {
+                    setError("Invalid credentials");
+                } else {
+                    setError("Something went wrong");
+                }
+                console.error("Error verifying token:", err);
+            }
+        };
+
+        verifyToken(); // Call the async function
+    }, [navigate]); // Add `navigate` as a dependency
     async function handleSubmit(e) {
         e.preventDefault() // Prevent default form submission
         try {
