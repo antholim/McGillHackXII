@@ -3,7 +3,22 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f9f9f9;
+    background: linear-gradient(270deg, #1e3c72, #2a5298);
+    background-size: 400% 400%;
+    animation: gradientAnimation 5s ease infinite;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .formContainer {
@@ -16,6 +31,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .title {
@@ -23,6 +39,7 @@
     margin-bottom: 1.5rem;
     text-align: center;
     color: #333;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .input {
@@ -33,6 +50,7 @@
     border-radius: 4px;
     outline: none;
     font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .input:focus {
@@ -49,8 +67,21 @@
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .loginButton:hover {
     background-color: #555;
+}
+
+.registerLink {
+    margin-top: 1rem;
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: none; /* Remove underline */
 }

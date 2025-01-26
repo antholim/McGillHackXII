@@ -1,7 +1,8 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from "./Login.module.css";
 import axios from 'axios';
+import Header from '../components/Header'; // Import Header component
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -51,6 +52,7 @@ function Login() {
 
         verifyToken(); // Call the async function
     }, [navigate]); // Add `navigate` as a dependency
+
     async function handleSubmit(e) {
         e.preventDefault() // Prevent default form submission
         try {
@@ -59,7 +61,7 @@ function Login() {
             if (response?.status === 200) {
                 localStorage.setItem('token', response?.data?.accessToken); // Store token in local storage
                 console.log("Logged in successfully");
-                navigate('/'); 
+                navigate('/');
                 //Check if has 2FA
                 console.log(response)
             }
@@ -73,28 +75,34 @@ function Login() {
     }
 
     return (
-        <div className={styles.container}>
-            <div className={styles.formContainer}>
-                <h2 className={styles.title}>Login</h2>
-                <input
-                    type="email"
-                    placeholder="Email"
-                    className={styles.input}
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    className={styles.input}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <button className={styles.loginButton} onClick={handleSubmit}>
-                    Login
-                </button>
+        <div>
+            <Header /> {/* Add Header component */}
+            <div className={styles.container}>
+                <div className={styles.formContainer}>
+                    <h2 className={styles.title}>LOGIN</h2>
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        className={styles.input}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        className={styles.input}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <button className={styles.loginButton} onClick={handleSubmit}>
+                        LOGIN
+                    </button>
+                    <button className={styles.registerLink} onClick={() => navigate('/register')}>
+                        REGISTER
+                    </button>
+                </div>
             </div>
         </div>
     );
- }
- export default Login;
+}
+export default Login;

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
 import TopRightMenu from './TopRightMenu';
 import "./Header.css"; // Import the CSS file
@@ -6,6 +6,7 @@ import axios from "axios"
 
 export default function Header() {
     const { isAuthenticated } = useAuth0();
+    const navigate = useNavigate();
 
     const fetchProfile = async () => {
         try {
@@ -19,11 +20,15 @@ export default function Header() {
         }
     };
 
+    const handleLogoClick = () => {
+        navigate('/');
+    };
+
     return (
         <div className="header-container">
-            <Link to="/" className="logo-container">
-                <img src="/avgh5n121.webp" alt="Logo" className="logo" />
-            </Link>
+            <div className="logo-container" onClick={handleLogoClick}>
+                <img src="/Logo.png" alt="Logo" className="logo" />
+            </div>
             <TopRightMenu />
         </div>
     );
