@@ -21,7 +21,7 @@
 }
 
 .top-right-menu-container.open .hamburger-menu {
-    width: 450px; /* Extend the width when menu is open */
+    width: 500px; /* Extend the width when menu is open */
 }
 
 .menu-content {

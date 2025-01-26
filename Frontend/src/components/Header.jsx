@@ -1,20 +1,12 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import LoginButton from './LoginButton';
-import Logout from './Logout';
+import { useAuth0 } from "@auth0/auth0-react";
 import TopRightMenu from './TopRightMenu';
 import "./Header.css"; // Import the CSS file
-import LogoutButton from "./Logout";
 import axios from "axios"
 
 export default function Header() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-    useEffect(()=> {
-        const token = localStorage.getItem('token');
-        if (token) {
-            setIsAuthenticated(true);
-        }
-    }, [isAuthenticated])
+    const { isAuthenticated } = useAuth0();
+
     const fetchProfile = async () => {
         try {
             const response = await axios.get('http://localhost:3000/profile', {
@@ -32,9 +24,6 @@ export default function Header() {
             <Link to="/" className="logo-container">
                 <img src="/avgh5n121.webp" alt="Logo" className="logo" />
             </Link>
-            <div className="auth-buttons">
-                {isAuthenticated ? <Logout setIsAuthenticated={setIsAuthenticated}/> : <LoginButton/>}
-            </div>
             <TopRightMenu />
         </div>
     );
