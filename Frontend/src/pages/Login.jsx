@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
+import styles from "./Login.module.css";
 import axios from 'axios';
 
 function Login() {
@@ -11,10 +12,9 @@ function Login() {
     useEffect(()=> {
         const token = localStorage.getItem('token');
         if (token) {
-            navigate('/home');
+            navigate('/testTaking');
         }
     }, [])
-
     async function handleSubmit(e) {
         e.preventDefault() // Prevent default form submission
         try {
@@ -23,7 +23,7 @@ function Login() {
             if (response?.status === 200) {
                 localStorage.setItem('token', response?.data?.accessToken); // Store token in local storage
                 console.log("Logged in successfully");
-                navigate('/trade'); 
+                navigate('/'); 
                 //Check if has 2FA
                 console.log(response)
             }
@@ -54,10 +54,11 @@ function Login() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <button className={styles.loginButton} onClick={handleLogin}>
+                <button className={styles.loginButton} onClick={handleSubmit}>
                     Login
                 </button>
             </div>
         </div>
     );
-}
+ }
+ export default Login;
