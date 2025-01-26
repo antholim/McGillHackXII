@@ -7,7 +7,6 @@ import { useContext, useState } from "react";
 import { TestTakingContext, TestTakingProvider } from "../Context/TestTakingContext.jsx";
 
 function TestTakingPageContent() {
-    // Use context to access shared state
     const { response, setResponse, score, setScore, userInput, setUserInput } =
         useContext(TestTakingContext);
 
@@ -42,7 +41,7 @@ function TestTakingPageContent() {
                 <div className={styles.answerContainer}>
                     <Answer userInput={userInput} handleInputChange={handleInputChange} />
                 </div>
-                <button onClick={fetchGPTResponse} disabled={loading}>
+                <button className={styles.submitButton} onClick={fetchGPTResponse} disabled={loading}>
                     {loading ? "Processing..." : "Submit Answer"}
                 </button>
             </div>
@@ -54,7 +53,6 @@ function TestTakingPageContent() {
     );
 }
 
-// Wrap the content with the provider
 export default function TestTakingPage() {
     return (
         <TestTakingProvider>

@@ -1,58 +1,48 @@
 import { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import styles from "./Register.module.css";
 
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState();
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
-    e.preventDefault(); // Prevent default form submission behavior
-    setError(""); // Clear previous errors
-
     try {
-      console.log("Registering user...");
-      console.log(email)
-      console.log(password)
+    //   e.preventDefault();
+    console.log("Registering");
       const result = await axios.post("http://localhost:3000/register", {
         email,
         password,
       });
 
-      console.log("Registration successful:", result.data);
-      console.log(email)
-      navigate("/login"); // Navigate to login page after successful registration
+      console.log(email, password);
+      console.log("EMAIL")
+      console.log(result);
     } catch (error) {
-      console.error("Error during registration:", error);
-      setError(error?.response?.data?.message || "Registration failed. Please try again.");
+      console.log(error);
+      setError(error?.response?.data);
     }
   }
 
   return (
     <div>
-      <h2>Sign Up</h2>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit" onClick={async (e)=> {
-            await handleSubmit(e)
-        }}>Sign Up</button>
-      {error && <p style={{ color: "red" }}>{error}</p>} {/* Display error message */}
+      <h2>Sign up</h2>
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button type="submit" onClick={handleSubmit}>
+        Sign up
+      </button>
     </div>
   );
 }
-
-export default Register;

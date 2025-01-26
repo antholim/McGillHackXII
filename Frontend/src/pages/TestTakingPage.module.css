@@ -38,4 +38,20 @@
     height: 80%;
 }
 
+.submitButton {
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    background-color: transparent;
+    border-right: 2px solid transparent; /* Default transparent border */
+    transition: all 0.3s ease; /* Smooth transition for hover and active states */
+    width: min-content;
+    white-space: nowrap;
+}
+
+.submitButton:hover {
+    background-color: #f0f0f0; /* Optional subtle hover effect */
+}
+
 

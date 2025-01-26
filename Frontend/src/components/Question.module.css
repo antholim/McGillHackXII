@@ -11,12 +11,8 @@
 .question {
     height: 100%;
     width: 100%;
-    font-size: 1rem;
-    font-weight: bold;
-    text-align: center;
-    border: #cccccc solid 1px;
+    text-align: justify-all;
     border-radius: 4px;
-    padding: 1rem;
 }
 
 .nav {
@@ -24,23 +20,26 @@
     flex-direction: column;
     gap: 1rem;
 }
-
 .navButton {
     padding: 0.5rem 1rem;
     border: none;
-    border-radius: 8px;
-    font-size: 1rem;
     cursor: pointer;
-    background-color: #f0f0f0;
     color: #333;
-    transition: all 0.3s ease;
+    background-color: transparent;
+    border-right: 2px solid transparent; /* Default transparent border */
+    transition: all 0.3s ease; /* Smooth transition for hover and active states */
 }
 
 .navButton:hover {
-    background-color: #e0e0e0;
+    background-color: #f0f0f0; /* Optional subtle hover effect */
+    border-right: 2px solid #cccccc; /* Add a visible border on hover */
 }
 
 .activeButton {
-    background-color: #007bff;
-    color: #fff;
-}
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    background-color: transparent;
+    border-right: 2px solid #cccccc;
+} /* Active state border */

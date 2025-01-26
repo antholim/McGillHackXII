@@ -23,7 +23,7 @@ function Login() {
             if (response?.status === 200) {
                 localStorage.setItem('token', response?.data?.accessToken); // Store token in local storage
                 console.log("Logged in successfully");
-                navigate('/testtaking'); 
+                navigate('/trade'); 
                 //Check if has 2FA
                 console.log(response)
             }
@@ -37,20 +37,27 @@ function Login() {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit} method='post'>
-
-                <h2>Log in</h2>
-
-                <input type='text' placeholder='Email or Username' value={email}
-                       onChange={e => setEmail(e.target.value)}/>
-                <input type='password' placeholder='Password' value={password}
-                       onChange={e => setPassword(e.target.value)}/>
-                <button>Log in</button>
-            </form>
+        <div className={styles.container}>
+            <div className={styles.formContainer}>
+                <h2 className={styles.title}>Login</h2>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    className={styles.input}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    className={styles.input}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <button className={styles.loginButton} onClick={handleLogin}>
+                    Login
+                </button>
+            </div>
         </div>
-
-    )
+    );
 }
-
-export default Login;
