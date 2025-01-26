@@ -60,7 +60,7 @@ export default function Home() {
                             </a>
                         </div>
                         <div className="founder-card">
-                            <h3>Anthony Mousaoubaa</h3>
+                            <h3 className="top-name">Anthony Mousaoubaa</h3>
                             <p>Data scientist focused on leveraging AI to solve real-world problems.</p>
                             <a href="https://www.linkedin.com/in/anthony-mousaoubaa-0b08092b1/" target="_blank" rel="noopener noreferrer">
                                 <FaLinkedin size={30} className="linkedin-icon" />
