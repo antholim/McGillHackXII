@@ -1,8 +1,10 @@
-export default function testTakingPage() {
+import Header from "../components/Header.jsx";
 
-    return (
-        <>
-            Test
-        </>
-    )
+export default function TestTakingPage() {
+  return (
+    <>
+      <Header />
+      Test
+    </>
+  );
 }
