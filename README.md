@@ -31,7 +31,6 @@ The CASPer Simulation Platform is a web application designed to simulate CASPer 
 ### Prerequisites
 - Node.js (v14 or higher)
 - MongoDB
-- Docker (optional)
 
 ### Steps
 1. Clone the repository:
