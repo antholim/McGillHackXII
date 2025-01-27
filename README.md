@@ -7,19 +7,16 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
-- [File Structure](#file-structure)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
-The CASPer Simulation Platform is a web application designed to simulate CASPer test scenarios. It allows users to practice answering situational judgment test questions and receive feedback on their responses.
+The CASPer Simulation Platform is a web application designed to simulate CASPer test scenarios. It allows users to practice answering situational judgment test questions and receive feedback on their responses using Ai.
 
 ## Features
 - User authentication and authorization
 - CASPer test simulation with various scenarios
-- Real-time feedback on user responses
+- Real-time feedback on user responses (what the user did good/bad, room for improvement, grade etc.)
 - Admin panel for managing questions and users
-- Responsive design for mobile and desktop
+- Responsive design for desktop
 
 ## Technologies Used
 - **Frontend**: React, React Router, Material-UI, Auth0
@@ -89,5 +86,3 @@ The CASPer Simulation Platform is a web application designed to simulate CASPer 
 
 ### User Input
 - **POST** `/user-input`: Submit user input for CASPer scenarios
-
-casper-simulation-platform/ ├── Backend/ │ ├── src/ │ │ ├── data/ │ │ │ └── questions.js │ │ ├── models/ │ │ │ └── user.js │ │ ├── services/ │ │ │ └── CasperService.js │ │ ├── utils.js │ │ ├── index.js │ │ └── serviceInit.js │ ├── .env │ └── package.json ├── Frontend/ │ ├── src/ │ │ ├── components/ │ │ │ └── TopRightMenu.css │ │ ├── data/ │ │ │ └── questions.js │ │ ├── pages/ │ │ │ ├── AccountDashboard.jsx │ │ │ ├── Register.module.css │ │ │ ├── Login.module.css │ │ │ └── App.jsx │ │ ├── theme/ │ │ │ └── theme.js │ │ ├── auth_config.json │ │ └── main.jsx │ ├── public/ │ ├── .env │ └── package.json ├── README.md └── .gitignore
