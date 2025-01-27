@@ -25,7 +25,6 @@ The CASPer Simulation Platform is a web application designed to simulate CASPer 
 - **Frontend**: React, React Router, Material-UI, Auth0
 - **Backend**: Node.js, Express, MongoDB, Mongoose, JWT, bcrypt
 - **Styling**: CSS, CSS Modules
-- **Other**: Docker, dotenv
 
 ## Installation
 
