@@ -90,4 +90,4 @@ The CASPer Simulation Platform is a web application designed to simulate CASPer 
 ### User Input
 - **POST** `/user-input`: Submit user input for CASPer scenarios
 
-## File Structure
+casper-simulation-platform/ ├── Backend/ │ ├── src/ │ │ ├── data/ │ │ │ └── questions.js │ │ ├── models/ │ │ │ └── user.js │ │ ├── services/ │ │ │ └── CasperService.js │ │ ├── utils.js │ │ ├── index.js │ │ └── serviceInit.js │ ├── .env │ └── package.json ├── Frontend/ │ ├── src/ │ │ ├── components/ │ │ │ └── TopRightMenu.css │ │ ├── data/ │ │ │ └── questions.js │ │ ├── pages/ │ │ │ ├── AccountDashboard.jsx │ │ │ ├── Register.module.css │ │ │ ├── Login.module.css │ │ │ └── App.jsx │ │ ├── theme/ │ │ │ └── theme.js │ │ ├── auth_config.json │ │ └── main.jsx │ ├── public/ │ ├── .env │ └── package.json ├── README.md └── .gitignore
